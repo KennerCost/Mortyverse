@@ -169,8 +169,12 @@ Cada personagem deve conter:
 <table align="center">
   <tr>
     <td align="center">
-      <img src="assets/screens/screen4.jpeg" width="250"><br>
+      <img src="assets/screens/screen6.jpeg" width="250"><br>
       <b>Character Details</b>
+    </td>
+    <td align="center">
+      <img src="assets/screens/screen4.jpeg" width="250"><br>
+      <b>Character Search</b>
     </td>
     <td align="center">
       <img src="assets/screens/screen5.jpeg" width="250"><br>
