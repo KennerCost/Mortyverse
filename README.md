@@ -179,7 +179,7 @@ Cada personagem deve conter:
 <br>
 
 <p align="center">
-  <img src="assets/screens/screen5.jpeg" width="25%" alt="Mortyverse Dark Mode">
+  <img src="assets/screens/screen5.jpeg" width="25%" alt="Mortyverse Dad Request">
 </p>
 
 <p align="center">
