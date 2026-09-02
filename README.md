@@ -1,23 +1,40 @@
 # Mortyverse
 
-Aplicativo Flutter para consultar episódios de Rick and Morty e visualizar os
-personagens de cada episódio usando uma API Node.js local.
+Aplicativo Flutter para consultar episódios de **Rick and Morty** e visualizar os personagens de cada episódio usando uma API Node.js local.
 
 ## Funcionalidades
 
-- Busca de episódio por ID.
-- Tela de personagens do episódio encontrado.
-- Filtro de personagens por nome e status.
-- Popup com detalhes do personagem.
-- Suporte a tema claro e escuro.
-- Splash screen e launcher icon configurados.
-- Teste de interface e teste real da API.
+* Busca de episódio por ID.
+* Tela de personagens do episódio encontrado.
+* Filtro de personagens por nome e status.
+* Popup com detalhes do personagem.
+* Suporte a tema claro e escuro.
+* Splash screen e launcher icon configurados.
+* Teste de interface e teste real da API.
+
+## Screenshots
+
+<p align="center">   <img src="assets/screens/screens1.png" width="700" alt="Mortyverse Home"> </p>
+
+Tela inicial do aplicativo, onde é possível buscar um episódio por ID e visualizar suas informações principais.
+
+<p align="center">   <img src="assets/screens/screens2.png" width="700" alt="Mortyverse Characters"> </p>
+
+Lista de personagens relacionados ao episódio encontrado, com opções de filtro por nome e status.
+
+<p align="center">   <img src="assets/screens/screens3.png" width="700" alt="Character Details"> </p>
+
+Tela com os detalhes do personagem selecionado, incluindo nome, status, espécie, gênero e origem.
+
+<p align="center"> <img src="assets/screens/screens4.png" width="700" alt="Character Details"> </p>
+
+> As imagens do aplicativo estão disponíveis em `assets/screens/`.
 
 ## Requisitos
 
-- Flutter SDK configurado.
-- API Node.js rodando na porta `3000`.
-- Celular/emulador com acesso ao endereço da API.
+* Flutter SDK configurado.
+* API Node.js rodando na porta `3000`.
+* Celular/emulador com acesso ao endereço da API.
 
 ## Instalação
 
@@ -39,8 +56,7 @@ O valor padrão atual está em:
 http://192.168.68.101:3000
 ```
 
-Para rodar em um celular físico, use o IP real do Wi-Fi do computador onde a API
-está rodando:
+Para rodar em um celular físico, use o IP real do Wi-Fi do computador onde a API está rodando:
 
 ```bash
 flutter run --dart-define=API_BASE_URL=http://SEU_IP_WIFI:3000
@@ -60,9 +76,9 @@ flutter run --dart-define=API_BASE_URL=http://localhost:3000
 
 No VS Code, também existem perfis prontos em `.vscode/launch.json`:
 
-- `Mortyverse - Physical phone`
-- `Mortyverse - Android emulator`
-- `Mortyverse - Desktop local API`
+* `Mortyverse - Physical phone`
+* `Mortyverse - Android emulator`
+* `Mortyverse - Desktop local API`
 
 ## Executar
 
@@ -72,9 +88,9 @@ flutter run
 
 Se estiver usando celular físico, confirme que:
 
-- O celular e o PC estão na mesma rede Wi-Fi.
-- A API Node.js está rodando.
-- O firewall do Windows permite conexões na porta `3000`.
+* O celular e o PC estão na mesma rede Wi-Fi.
+* A API Node.js está rodando.
+* O firewall do Windows permite conexões na porta `3000`.
 
 ## Testes
 
@@ -96,9 +112,7 @@ Rodar apenas o teste real da API:
 flutter test test/episode_service_api_test.dart
 ```
 
-O teste real da API depende do backend estar rodando e acessível. Se a API
-estiver desligada ou sem internet para consultar `rickandmortyapi.com`, esse
-teste pode falhar mesmo que o app esteja compilando corretamente.
+O teste real da API depende do backend estar rodando e acessível. Se a API estiver desligada ou sem internet para consultar `rickandmortyapi.com`, esse teste pode falhar mesmo que o app esteja compilando corretamente.
 
 ## Gerar ícones e splash
 
@@ -118,13 +132,13 @@ dart run flutter_native_splash:create
 
 ```txt
 lib/
-  models/
-  screens/
-    home/
-    characters/
-  services/
-  theme/
-  widgets/
+├── models/
+├── screens/
+│   ├── home/
+│   └── characters/
+├── services/
+├── theme/
+└── widgets/
 ```
 
 ## API esperada
@@ -135,18 +149,18 @@ GET /episode/:id
 
 O retorno esperado contém:
 
-- `id`
-- `name`
-- `air_date`
-- `episode`
-- `characters`
+* `id`
+* `name`
+* `air_date`
+* `episode`
+* `characters`
 
 Cada personagem deve conter:
 
-- `name`
-- `status`
-- `species`
-- `gender`
-- `origin`
-- `image`
-- `created`
+* `name`
+* `status`
+* `species`
+* `gender`
+* `origin`
+* `image`
+* `created`
