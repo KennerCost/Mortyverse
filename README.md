@@ -148,43 +148,36 @@ Cada personagem deve conter:
 * `created`
 
 ## Screenshots
-## 📱 Screenshots
 
-<p align="center">
-  <img src="assets/screens/screen1.jpeg" width="25%" alt="Mortyverse Home">
-  &nbsp;
-  <img src="assets/screens/screen2.jpeg" width="25%" alt="Mortyverse Episode">
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/screens/screen1.jpeg" width="250"><br>
+      <b>Home</b>
+    </td>
+    <td align="center">
+      <img src="assets/screens/screen2.jpeg" width="250"><br>
+      <b>Episode Details</b>
+    </td>
+    <td align="center">
+      <img src="assets/screens/screen3.jpeg" width="250"><br>
+      <b>Characters</b>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <b>Home</b>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>Episode</b>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="assets/screens/screen3.jpeg" width="25%" alt="Mortyverse Characters">
-  &nbsp;
-  <img src="assets/screens/screen4.jpeg" width="25%" alt="Character Details">
-</p>
-
-<p align="center">
-  <b>Characters</b>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>Character Details</b>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="assets/screens/screen5.jpeg" width="25%" alt="Mortyverse Dad Request">
-</p>
-
-<p align="center">
-  <b>Dad Request</b>
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/screens/screen4.jpeg" width="250"><br>
+      <b>Character Details</b>
+    </td>
+    <td align="center">
+      <img src="assets/screens/screen5.jpeg" width="250"><br>
+      <b>Bad Request</b>
+    </td>
+  </tr>
+</table>
 
 ---
 > As imagens do aplicativo estão disponíveis em `assets/screens/`.
