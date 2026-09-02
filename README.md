@@ -13,21 +13,45 @@ Aplicativo Flutter para consultar episódios de **Rick and Morty** e visualizar 
 * Teste de interface e teste real da API.
 
 ## Screenshots
+## 📱 Screenshots
 
-<p align="center">   <img src="assets/screens/screens1.png" width="700" alt="Mortyverse Home"> </p>
+<p align="center">
+  <img src="assets/screens/screen1.jpeg" width="45%" alt="Mortyverse Home">
+  &nbsp;
+  <img src="assets/screens/screen2.jpeg" width="45%" alt="Mortyverse Episode">
+</p>
 
-Tela inicial do aplicativo, onde é possível buscar um episódio por ID e visualizar suas informações principais.
+<p align="center">
+  <b>Home</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>Episode</b>
+</p>
 
-<p align="center">   <img src="assets/screens/screens2.png" width="700" alt="Mortyverse Characters"> </p>
+<br>
 
-Lista de personagens relacionados ao episódio encontrado, com opções de filtro por nome e status.
+<p align="center">
+  <img src="assets/screens/screen3.jpeg" width="45%" alt="Mortyverse Characters">
+  &nbsp;
+  <img src="assets/screens/screen4.jpeg" width="45%" alt="Character Details">
+</p>
 
-<p align="center">   <img src="assets/screens/screens3.png" width="700" alt="Character Details"> </p>
+<p align="center">
+  <b>Characters</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>Character Details</b>
+</p>
 
-Tela com os detalhes do personagem selecionado, incluindo nome, status, espécie, gênero e origem.
+<br>
 
-<p align="center"> <img src="assets/screens/screens4.png" width="700" alt="Character Details"> </p>
+<p align="center">
+  <img src="assets/screens/screen5.jpeg" width="45%" alt="Mortyverse Dark Mode">
+</p>
 
+<p align="center">
+  <b>Dark Mode</b>
+</p>
+
+---
 > As imagens do aplicativo estão disponíveis em `assets/screens/`.
 
 ## Requisitos
