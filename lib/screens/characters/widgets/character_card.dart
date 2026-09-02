@@ -11,19 +11,27 @@ class CharacterCard extends StatelessWidget {
 
   void _showDetails(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final height = MediaQuery.sizeOf(context).height;
+    final size = MediaQuery.sizeOf(context);
+    final dialogWidth = size.width.clamp(320.0, 430.0);
+    final imageHeight = (dialogWidth * 0.58).clamp(170.0, 230.0);
 
     showDialog<void>(
       context: context,
       builder: (context) {
         return Dialog(
           backgroundColor: colors.surface,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 22),
+          insetPadding: const EdgeInsets.symmetric(
+            horizontal: 22,
+            vertical: 24,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22),
           ),
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: height * 0.82),
+            constraints: BoxConstraints(
+              maxWidth: 430,
+              maxHeight: size.height * 0.84,
+            ),
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -32,22 +40,27 @@ class CharacterCard extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
-                        child: AspectRatio(
-                          aspectRatio: 1.25,
-                          child: Image.network(
-                            character.image,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            loadingBuilder: (context, child, progress) {
-                              if (progress == null) return child;
-                              return const _ImagePlaceholder(
-                                icon: Icons.image_outlined,
-                              );
-                            },
-                            errorBuilder: (_, _, _) => const _ImagePlaceholder(
-                              icon: Icons.person_outline,
+                      Center(
+                        child: SizedBox(
+                          width: dialogWidth,
+                          height: imageHeight,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(18),
+                            child: Image.network(
+                              character.image,
+                              width: double.infinity,
+                              height: imageHeight,
+                              fit: BoxFit.cover,
+                              loadingBuilder: (context, child, progress) {
+                                if (progress == null) return child;
+                                return const _ImagePlaceholder(
+                                  icon: Icons.image_outlined,
+                                );
+                              },
+                              errorBuilder: (_, _, _) =>
+                                  const _ImagePlaceholder(
+                                    icon: Icons.person_outline,
+                                  ),
                             ),
                           ),
                         ),
@@ -69,8 +82,11 @@ class CharacterCard extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     character.name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       color: colors.onSurface,
+                      fontSize: dialogWidth * 0.055,
                     ),
                   ),
                   const SizedBox(height: 14),
@@ -235,6 +251,7 @@ class _DetailLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = value.trim().isEmpty ? '-' : value;
+    final width = MediaQuery.sizeOf(context).width.clamp(320.0, 430.0);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -261,6 +278,7 @@ class _DetailLine extends StatelessWidget {
               '$label:',
               style: TextStyle(
                 color: context.mutedText,
+                fontSize: width * 0.034,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -268,7 +286,11 @@ class _DetailLine extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: width * 0.034,
+                height: 1.25,
+              ),
             ),
           ),
         ],
