@@ -183,7 +183,7 @@ Cada personagem deve conter:
 </p>
 
 <p align="center">
-  <b>Dark Mode</b>
+  <b>Dad Request</b>
 </p>
 
 ---
