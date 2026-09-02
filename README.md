@@ -12,48 +12,6 @@ Aplicativo Flutter para consultar episódios de **Rick and Morty** e visualizar 
 * Splash screen e launcher icon configurados.
 * Teste de interface e teste real da API.
 
-## Screenshots
-## 📱 Screenshots
-
-<p align="center">
-  <img src="assets/screens/screen1.jpeg" width="45%" alt="Mortyverse Home">
-  &nbsp;
-  <img src="assets/screens/screen2.jpeg" width="45%" alt="Mortyverse Episode">
-</p>
-
-<p align="center">
-  <b>Home</b>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>Episode</b>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="assets/screens/screen3.jpeg" width="45%" alt="Mortyverse Characters">
-  &nbsp;
-  <img src="assets/screens/screen4.jpeg" width="45%" alt="Character Details">
-</p>
-
-<p align="center">
-  <b>Characters</b>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <b>Character Details</b>
-</p>
-
-<br>
-
-<p align="center">
-  <img src="assets/screens/screen5.jpeg" width="45%" alt="Mortyverse Dark Mode">
-</p>
-
-<p align="center">
-  <b>Dark Mode</b>
-</p>
-
----
-> As imagens do aplicativo estão disponíveis em `assets/screens/`.
-
 ## Requisitos
 
 * Flutter SDK configurado.
@@ -188,3 +146,45 @@ Cada personagem deve conter:
 * `origin`
 * `image`
 * `created`
+
+## Screenshots
+## 📱 Screenshots
+
+<p align="center">
+  <img src="assets/screens/screen1.jpeg" width="25%" alt="Mortyverse Home">
+  &nbsp;
+  <img src="assets/screens/screen2.jpeg" width="25%" alt="Mortyverse Episode">
+</p>
+
+<p align="center">
+  <b>Home</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>Episode</b>
+</p>
+
+<br>
+
+<p align="center">
+  <img src="assets/screens/screen3.jpeg" width="25%" alt="Mortyverse Characters">
+  &nbsp;
+  <img src="assets/screens/screen4.jpeg" width="25%" alt="Character Details">
+</p>
+
+<p align="center">
+  <b>Characters</b>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>Character Details</b>
+</p>
+
+<br>
+
+<p align="center">
+  <img src="assets/screens/screen5.jpeg" width="25%" alt="Mortyverse Dark Mode">
+</p>
+
+<p align="center">
+  <b>Dark Mode</b>
+</p>
+
+---
+> As imagens do aplicativo estão disponíveis em `assets/screens/`.
