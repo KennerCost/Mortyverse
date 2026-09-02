@@ -21,6 +21,23 @@ class CharacterSearchField extends StatefulWidget {
 
 class _CharacterSearchFieldState extends State<CharacterSearchField> {
   final _focusNode = FocusNode();
+  String _query = '';
+
+  List<Character> get _suggestions {
+    final query = _query.trim().toLowerCase();
+    if (query.isEmpty || !_focusNode.hasFocus) return [];
+
+    return widget.characters.where((character) {
+      return character.name.toLowerCase().contains(query);
+    }).toList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _query = widget.controller.text;
+    _focusNode.addListener(() => setState(() {}));
+  }
 
   @override
   void dispose() {
@@ -28,16 +45,22 @@ class _CharacterSearchFieldState extends State<CharacterSearchField> {
     super.dispose();
   }
 
-  Iterable<String> _options(TextEditingValue value) {
-    final query = value.text.trim().toLowerCase();
-    final names = widget.characters.map((character) => character.name);
-    if (query.isEmpty) return names;
-    return names.where((name) => name.toLowerCase().contains(query));
+  void _change(String value) {
+    setState(() => _query = value);
+    widget.onChanged(value);
+  }
+
+  void _select(Character character) {
+    widget.controller
+      ..text = character.name
+      ..selection = TextSelection.collapsed(offset: character.name.length);
+    _change(character.name);
+    _focusNode.unfocus();
   }
 
   void _clear() {
     widget.controller.clear();
-    widget.onChanged('');
+    _change('');
     _focusNode.requestFocus();
   }
 
@@ -45,25 +68,16 @@ class _CharacterSearchFieldState extends State<CharacterSearchField> {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width.clamp(320.0, 430.0);
     final colors = Theme.of(context).colorScheme;
+    final suggestions = _suggestions;
 
-    return RawAutocomplete<String>(
-      textEditingController: widget.controller,
-      focusNode: _focusNode,
-      optionsBuilder: _options,
-      onSelected: (name) {
-        widget.controller
-          ..text = name
-          ..selection = TextSelection.collapsed(offset: name.length);
-        widget.onChanged(name);
-        _focusNode.unfocus();
-      },
-      fieldViewBuilder: (context, controller, focusNode, onSubmit) {
-        return SizedBox(
+    return Column(
+      children: [
+        SizedBox(
           height: width * 0.112,
           child: TextField(
-            controller: controller,
-            focusNode: focusNode,
-            onChanged: widget.onChanged,
+            controller: widget.controller,
+            focusNode: _focusNode,
+            onChanged: _change,
             textInputAction: TextInputAction.search,
             style: TextStyle(color: colors.onSurface, fontSize: width * 0.044),
             decoration: InputDecoration(
@@ -74,11 +88,8 @@ class _CharacterSearchFieldState extends State<CharacterSearchField> {
                 color: context.mutedText,
                 size: width * 0.065,
               ),
-              suffixIcon: controller.text.isEmpty
-                  ? Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: context.mutedText,
-                    )
+              suffixIcon: _query.isEmpty
+                  ? null
                   : IconButton(
                       onPressed: _clear,
                       icon: Icon(Icons.close_rounded, color: context.mutedText),
@@ -89,59 +100,65 @@ class _CharacterSearchFieldState extends State<CharacterSearchField> {
               border: _border(colors.outlineVariant),
             ),
           ),
-        );
-      },
-      optionsViewBuilder: (context, onSelected, options) {
-        final names = options.toList();
-
-        return Align(
-          alignment: Alignment.topLeft,
-          child: Material(
-            color: colors.surface,
-            elevation: 8,
-            borderRadius: BorderRadius.circular(14),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: width - (width * 0.104),
-                maxHeight: 250,
-              ),
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                primary: false,
-                physics: const ClampingScrollPhysics(),
-                itemCount: names.length,
-                separatorBuilder: (_, _) => Divider(
-                  height: 1,
-                  color: colors.outlineVariant.withValues(alpha: 0.55),
+        ),
+        if (suggestions.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Container(
+            constraints: BoxConstraints(maxHeight: width * 0.55),
+            decoration: BoxDecoration(
+              color: colors.surface,
+              border: Border.all(color: colors.outlineVariant),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(
+                    alpha: context.isDark ? 0.18 : 0.07,
+                  ),
+                  blurRadius: 14,
+                  offset: const Offset(0, 7),
                 ),
-                itemBuilder: (context, index) {
-                  final name = names[index];
-
-                  return InkWell(
-                    onTap: () => onSelected(name),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 13,
-                      ),
-                      child: Text(
-                        name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: colors.onSurface,
-                          fontSize: width * 0.04,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  );
-                },
+              ],
+            ),
+            child: ListView.separated(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              itemCount: suggestions.length,
+              separatorBuilder: (_, _) => Divider(
+                height: 1,
+                color: colors.outlineVariant.withValues(alpha: 0.55),
               ),
+              itemBuilder: (context, index) {
+                final character = suggestions[index];
+
+                return ListTile(
+                  dense: true,
+                  leading: CircleAvatar(
+                    backgroundColor: colors.outlineVariant,
+                    backgroundImage: NetworkImage(character.image),
+                  ),
+                  title: Text(
+                    character.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: colors.onSurface,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  subtitle: Text(
+                    character.status,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: context.mutedText),
+                  ),
+                  onTap: () => _select(character),
+                );
+              },
             ),
           ),
-        );
-      },
+        ],
+      ],
     );
   }
 
